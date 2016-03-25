@@ -6,7 +6,7 @@ import numpy as np
 
 
 def setup(l, m, b):
-    q = 1
+    q = 2
     d = 1
     n = 1
     chi = 1
