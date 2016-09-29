@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import random
 import math
 import numpy as np
 
