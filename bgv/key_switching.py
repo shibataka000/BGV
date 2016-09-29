@@ -9,7 +9,7 @@ def bit_decomp(x, q):
         b = format(n, "b")
         b = "0" * (digit - len(b)) + b
         return b
-    
+
     log_q = math.floor(math.log(q, 2))
     u_list = []
     for i in range(log_q + 1):

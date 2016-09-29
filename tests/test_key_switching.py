@@ -17,4 +17,3 @@ def test_bit_decomp():
     for i in range(log_q + 1):
         x1 += (2 ** i) * u_list[i]
     assert all(x0 == x1)
-
