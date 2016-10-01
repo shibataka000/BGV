@@ -3,7 +3,7 @@
 import bgv.basic_encryption_scheme as E
 
 
-def test_basic_schema():
+def test_basic_encryption_scheme():
     params = E.setup(1, 1, 1)
     sk = E.secret_key_gen(params)
     pk = E.public_key_gen(params, sk)
