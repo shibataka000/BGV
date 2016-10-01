@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import bgv.basic_scheme as E
+import bgv.basic_encryption_scheme as E
 
 
 def test_basic_schema():
