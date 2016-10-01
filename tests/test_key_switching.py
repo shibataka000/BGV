@@ -4,7 +4,7 @@ import math
 import numpy as np
 
 
-from bgv.key_switching import bit_decomp
+from bgv.key_switching import bit_decomp, powerof2
 
 
 def test_bit_decomp():
@@ -17,3 +17,20 @@ def test_bit_decomp():
     for i in range(log_q + 1):
         x1 += (2 ** i) * u_list[i]
     assert all(x0 == x1)
+
+
+def test_lemma2():
+    n = 100
+    q = 100
+    c = np.random.randint(0, q, n)
+    s = np.random.randint(0, q, n)
+
+    u_list = bit_decomp(c, q)
+    x_list = powerof2(s, q)
+    assert len(u_list) == len(x_list)
+    l = len(u_list)
+    left = 0
+    for i in range(l):
+        left += sum(u_list[i] * x_list[i])
+    right = sum(c * s)
+    assert left == right
