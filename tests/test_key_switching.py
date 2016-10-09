@@ -20,6 +20,22 @@ def test_bit_decomp():
     assert all(x0 == x1)
 
 
+def test_whether_shape_of_bit_decomp_is_correct():
+    q = 100
+    n = 100
+    x0 = np.random.randint(0, q, n)
+    u_list = bit_decomp(x0, q)
+    assert u_list.size == n * math.ceil(math.log(q, 2))
+
+
+def test_whether_shape_of_powerof2_is_correct():
+    q = 100
+    n = 100
+    x0 = np.random.randint(0, q, n)
+    u_list = powerof2(x0, q)
+    assert u_list.size == n * math.ceil(math.log(q, 2))
+
+
 def test_lemma2():
     n = 100
     q = 100
