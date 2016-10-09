@@ -5,9 +5,9 @@ import numpy as np
 
 
 def setup(l, m, b):
-    q = 2
-    d = 1
-    n = 1
+    q = 10
+    d = 10
+    n = 10
     chi = 1
     N = int(math.ceil((2 * n + 1) * math.log(q, 2)))
     return (q, d, n, N, chi)
