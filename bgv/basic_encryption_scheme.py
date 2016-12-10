@@ -29,7 +29,7 @@ def public_key_gen(params, sk):
     e = np.random.randint(0, q, N)
     b = np.dot(A, sk[1:]) + 2 * e
     b.resize(N, 1)
-    A = np.hstack((b, (-1 * A) % q))
+    A = np.hstack((b, -1 * A)) % q
     assert all(np.dot(A, sk) % q == (2 * e) % q)
     return A
 
@@ -40,7 +40,7 @@ def enc(params, pk, m):
     m = np.array([m] + [0] * n)
     r = np.random.randint(0, 2, N)
     c = m + np.dot(pk.T, r)
-    return c
+    return c % q
 
 
 def dec(params, sk, c):
