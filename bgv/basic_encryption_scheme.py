@@ -1,10 +1,12 @@
 # coding: utf-8
 
 import math
+import random
 import numpy as np
 
 
 def setup(l, m, b):
+    q = random.getrandbits(m)
     q = 10
     d = 10
     n = 10
