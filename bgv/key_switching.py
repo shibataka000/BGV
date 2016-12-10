@@ -51,3 +51,10 @@ def switch_key(tau, c1, q):
     c1t = np.transpose(bit_decomp(c1, q))
     c2 = np.dot(c1t, tau)
     return c2
+
+
+def scale(x, q, p, r):
+    assert q > p
+    x2 = round(x * (p / q))
+    assert all(x % r == x2 % r)
+    return x2
