@@ -27,7 +27,7 @@ def powerof2(x, q):
     log_q = math.floor(math.log(q, 2))
     x_list = []
     for i in range(log_q + 1):
-        new_x = (2 ** i) * x
+        new_x = ((2 ** i) * x) % q
         x_list.append(new_x)
     return np.hstack(tuple(x_list))
 
@@ -37,6 +37,8 @@ def switch_key_gen(s1, s2, params1, params2):
     (q2, d2, n2, N2, chi2) = params2
     assert q1 == q2
     q = q1
+    # Aとpowerof2(s1)の次元数が違う。論文が間違っている？
+    # n1? n1+1?
     N2 = n1 * math.ceil(math.log(q, 2))
     N2 = (n1 + 1) * math.ceil(math.log(q, 2))
     params2 = (q2, d2, n2, N2, chi2)
@@ -44,12 +46,12 @@ def switch_key_gen(s1, s2, params1, params2):
     A = E.public_key_gen(params2, s2)
     B = np.array(A)
     B[:, 0] += powerof2(s1, q)
-    return B
+    return B % q
 
 
 def switch_key(tau, c1, q):
-    c1t = np.transpose(bit_decomp(c1, q))
-    c2 = np.dot(c1t, tau)
+    bd = np.transpose(bit_decomp(c1, q))
+    c2 = np.dot(bd, tau) % q
     return c2
 
 
